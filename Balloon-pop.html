@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balloon Pop - Math Challenge</title>
+    <link rel="stylesheet" href="balloon-pop.css" />
+</head>
+<body>
+    <!-- Top Navbar -->
+    <div class="navbar">
+        <div class="nav-left">
+            <button class="home-btn" id="homeBtn">🏠 Home</button>
+        </div>
+        <div class="game-title">🎈 Balloon Pop</div>
+        <div class="question-box" id="question">2 + 4 = ?</div>
+        <div class="score-box">🏆 Score: <span id="score">0</span></div>
+        <div class="timer-box">⏱️ <span id="timer">60</span>s</div>
+        <div class="nav-right">
+            <button class="start-btn" id="startBtn">▶ Start</button>
+            <button class="restart-btn" id="restartBtn" disabled>🔄 Restart</button>
+        </div>
+    </div>
+
+    <!-- Game Area -->
+    <div class="game-area" id="gameArea"></div>
+
+    <!-- Game Over Modal -->
+    <div class="game-overlay" id="gameOverlay" style="display: none;">
+        <div class="game-over-modal">
+            <h2>Time's Up! 🎈</h2>
+            <p>Your final score: <span id="finalScore">0</span></p>
+            <div class="modal-buttons">
+                <button class="modal-btn" id="playAgainBtn">Play Again</button>
+                <button class="modal-btn home-modal-btn" id="homeModalBtn">Home</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="balloon-pop.js"></script>
+</body>
+</html>
