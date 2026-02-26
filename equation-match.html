@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equation Match | Little Legends</title>
+  <link rel="stylesheet" href="equation-match.css" />
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <nav class="nav-container">
+      <div class="mobile-menu-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#" class="active">Games</a></li>
+      </ul>
+
+      <div class="nav-stats">
+        <div class="nav-stat">
+          <span class="nav-stat-label">Score</span>
+          <span class="nav-stat-value" id="score">0</span>
+        </div>
+        <div class="nav-stat">
+          <span class="nav-stat-label">Time</span>
+          <span class="nav-stat-value" id="time">60</span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="game-container">
+    <!-- Game Header -->
+    <div class="game-header">
+      <h1 class="game-title">Equation Match</h1>
+      <div class="progress-info">
+        <span id="matchedCount">0</span>/<span id="totalCount">5</span> Matched
+      </div>
+    </div>
+
+    <!-- Game Board -->
+    <div class="game-board">
+      <!-- Left Side - Questions -->
+      <div class="questions-panel">
+        <h2 class="panel-title">Questions</h2>
+        <div class="questions-list" id="questionsList">
+          <!-- Questions will be dynamically inserted -->
+        </div>
+      </div>
+
+      <!-- Right Side - Answers -->
+      <div class="answers-panel">
+        <h2 class="panel-title">Answers</h2>
+        <div class="answers-list" id="answersList">
+          <!-- Answers will be dynamically inserted -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Hint Section -->
+    <div class="hint-section" id="hint">
+      <span class="hint-icon">ℹ️</span>
+      <span class="hint-text" id="hintText">Select a question, then select its answer</span>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button id="restartBtn" class="btn btn-primary">
+        <span class="btn-icon">↻</span>
+        New Game
+      </button>
+    </div>
+  </div>
+
+  <!-- Win Popup -->
+  <div id="winPopup" class="popup-overlay">
+    <div class="popup-content">
+      <div class="popup-header">
+        <span class="popup-icon">✓</span>
+        <h2 class="popup-title">Completed!</h2>
+      </div>
+      
+      <p class="popup-message">Congratulations! You completed the game successfully.</p>
+      
+      <div class="popup-score">
+        <span class="score-label">Final Score</span>
+        <span class="score-value" id="finalScore">0</span>
+      </div>
+
+      <div class="popup-actions">
+        <button id="playAgainBtn" class="popup-btn popup-btn-primary">Play Again</button>
+        <button id="homeBtn" class="popup-btn popup-btn-secondary">Home</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Time End Popup -->
+  <div id="timeEndPopup" class="popup-overlay">
+    <div class="popup-content">
+      <div class="popup-header">
+        <span class="popup-icon time-icon">⏰</span>
+        <h2 class="popup-title">Time's Up!</h2>
+      </div>
+      
+      <p class="popup-message">The timer has expired. Would you like to try again?</p>
+      
+      <div class="popup-score">
+        <span class="score-label">Your Score</span>
+        <span class="score-value" id="timeEndScore">0</span>
+      </div>
+
+      <div class="popup-actions">
+        <button id="timeEndPlayAgainBtn" class="popup-btn popup-btn-primary">Play Again</button>
+        <button id="timeEndHomeBtn" class="popup-btn popup-btn-secondary">Home</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="equation-match.js"></script>
+</body>
+</html>

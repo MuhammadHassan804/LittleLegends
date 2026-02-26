@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TUG: ENGLISH GRAMMAR GAME</title>
+  <link rel="stylesheet" href="tug-english.css" />
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header class="app-header">
+    <a class="home-btn" href="index.html">🏠 HOME</a>
+    <h1 class="app-title">TUG: ENGLISH GRAMMAR GAME</h1>
+  </header>
+
+  <!-- Main Layout -->
+  <main class="layout">
+
+    <!-- LEFT: Team 1 (Blue) -->
+    <section class="team-panel blue" id="teamBlue">
+      <div class="panel-top">
+        <div class="team-name">1st Team</div>
+        <div class="team-score"><span id="blueScore">0</span></div>
+      </div>
+
+      <div class="question" id="blueQuestion">Which tense is used in: 'I am reading'?</div>
+
+      <!-- Multiple Choice Options -->
+      <div class="options-container" id="blueOptions">
+        <button class="option-btn" data-option="A">A: Past Simple</button>
+        <button class="option-btn" data-option="B">B: Future Simple</button>
+        <button class="option-btn" data-option="C">C: Present Simple</button>
+        <button class="option-btn" data-option="D">D: Present Continuous</button>
+      </div>
+
+      <div class="hint" id="blueHint">Your turn ✅</div>
+    </section>
+
+    <!-- CENTER: Video Box -->
+    <section class="center-panel">
+      <div class="center-top">
+        <div class="mini-score">
+          <div class="mini-label">1st Team</div>
+          <div class="mini-value" id="miniBlue">0</div>
+        </div>
+
+        <div class="timer" id="timer">00:00</div>
+
+        <div class="mini-score">
+          <div class="mini-label">2nd Team</div>
+          <div class="mini-value" id="miniRed">0</div>
+        </div>
+      </div>
+
+      <div class="video-container" id="videoContainer">
+        <div class="dashed-line"></div>
+        <video id="tugVideo" class="tug-video" loop muted playsinline>
+          <source src="main.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay" id="videoOverlay"></div>
+      </div>
+
+      <div class="center-bottom">
+        <div class="turn-pill" id="turnPill">BLUE TURN</div>
+        <button class="restart" id="restartBtn">Restart</button>
+      </div>
+    </section>
+
+    <!-- RIGHT: Team 2 (Red) -->
+    <section class="team-panel red" id="teamRed">
+      <div class="panel-top">
+        <div class="team-name">2nd Team</div>
+        <div class="team-score"><span id="redScore">0</span></div>
+      </div>
+
+      <div class="question" id="redQuestion">Choose the correct form:</div>
+
+      <!-- Multiple Choice Options -->
+      <div class="options-container" id="redOptions">
+        <button class="option-btn" data-option="A">A: You like coffee?</button>
+        <button class="option-btn" data-option="B">B: Like you coffee?</button>
+        <button class="option-btn" data-option="C">C: You do like coffee?</button>
+        <button class="option-btn" data-option="D">D: Do you like coffee?</button>
+      </div>
+
+      <div class="hint" id="redHint">Wait… ⏳</div>
+    </section>
+    
+    <!-- Draw Popup -->
+    <div class="draw-popup" id="drawPopup">
+      <div class="draw-popup-content">
+        <h2>🎉 WELL PLAYED! 🎉</h2>
+        <p>It's a draw! Both teams showed great grammar skills!</p>
+        <button class="draw-popup-close" id="closeDrawPopup">Continue</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="tug-english.js"></script>
+</body>
+</html>

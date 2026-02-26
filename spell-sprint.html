@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spell Sprint - Complete the Word</title>
+  <link rel="stylesheet" href="spell-sprint.css" />
+</head>
+<body>
+
+  <!-- Header - Exactly same as before -->
+  <header class="app-header">
+    <a class="home-btn" href="index.html">🏠 HOME</a>
+    <h1 class="app-title">SPELL SPRINT</h1>
+    <div class="difficulty-selector">
+      <select id="difficultySelect" class="difficulty-dropdown">
+        <option value="easy">Easy</option>
+        <option value="medium" selected>Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Main Game Container -->
+  <main class="game-container">
+
+    <!-- Stats Bar - Clean, no gradients -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-label">Score</span>
+        <span class="stat-value" id="score">0</span>
+      </div>
+      
+      <div class="stat-item">
+        <span class="stat-label">Streak</span>
+        <span class="stat-value" id="streak">0</span>
+        <span class="fire-emoji" id="fireEmoji">🔥</span>
+      </div>
+      
+      <div class="stat-item">
+        <span class="stat-label">Time</span>
+        <span class="stat-value" id="timer">00:30</span>
+      </div>
+    </div>
+
+    <!-- Level Badge - Clean design -->
+    <div class="level-badge" id="levelBadge">Level 1 · Medium</div>
+
+    <!-- Word Container -->
+    <div class="word-container">
+      <div class="incomplete-word" id="incompleteWord">C _ T</div>
+    </div>
+
+    <!-- Hint Container -->
+    <div class="hint-container">
+      <span class="hint-icon">💡</span>
+      <span class="hint-text" id="hintText">A furry pet that meows</span>
+    </div>
+
+    <!-- Options Container (Letters) -->
+    <div class="options-container" id="optionsContainer">
+      <!-- Letter buttons will be generated here -->
+    </div>
+
+    <!-- Message Display -->
+    <div class="message-display" id="messageDisplay"></div>
+
+    <!-- Progress Bar - Clean solid color -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Game Over Modal - Professional style -->
+    <div class="modal-overlay" id="gameOverModal">
+      <div class="modal-content">
+        <h2>Game Over</h2>
+        <div class="modal-stats">
+          <div class="modal-stat">
+            <span class="modal-stat-label">Final Score</span>
+            <span class="modal-stat-value" id="finalScore">0</span>
+          </div>
+          <div class="modal-stat">
+            <span class="modal-stat-label">Best Streak</span>
+            <span class="modal-stat-value" id="finalStreak">0</span>
+          </div>
+          <div class="modal-stat">
+            <span class="modal-stat-label">Words</span>
+            <span class="modal-stat-value" id="finalWords">0</span>
+          </div>
+        </div>
+        <div class="modal-buttons">
+          <button class="modal-btn primary" id="playAgainBtn">Play Again</button>
+          <button class="modal-btn secondary" onclick="window.location.href='index.html'">Home</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Level Complete Modal - Professional style -->
+    <div class="modal-overlay" id="levelCompleteModal">
+      <div class="modal-content">
+        <h2>Level Complete</h2>
+        <p class="modal-message">Great job! Ready for the next level?</p>
+        <div class="modal-buttons">
+          <button class="modal-btn primary" id="continueBtn">Continue</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="spell-sprint.js"></script>
+</body>
+</html>
