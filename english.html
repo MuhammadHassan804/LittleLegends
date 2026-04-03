@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>✨ English Learning Typing Game ✨ | Kids Typing Practice</title>
+  <link rel="stylesheet" href="english.css">
+  <!-- Preload success/error sounds (silent web audio context will be created on user interaction) -->
+</head>
+<body>
+  <div class="game-container">
+    <!-- Decorative floating elements (clouds/stars) -->
+    <div class="deco deco-1">⭐</div>
+    <div class="deco deco-2">☁️</div>
+    <div class="deco deco-3">✏️</div>
+    <div class="deco deco-4">📚</div>
+
+    <!-- Header / Title -->
+    <header class="game-header">
+      <h1>⌨️ English Learning Typing Game 🎮</h1>
+      <div class="stats-bar">
+        <div class="stat-card">
+          <span class="stat-icon">⚡</span>
+          <span class="stat-label">WPM</span>
+          <span id="wpmValue" class="stat-value">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">🎯</span>
+          <span class="stat-label">Accuracy</span>
+          <span id="accuracyValue" class="stat-value">100</span>
+          <span>%</span>
+        </div>
+        <div class="stat-card progress-card">
+          <span class="stat-icon">📊</span>
+          <span class="stat-label">Progress</span>
+          <div class="progress-bar-bg">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Paragraph Display -->
+    <div class="paragraph-card">
+      <div class="paragraph-label">📖 Type this sentence:</div>
+      <div id="targetParagraph" class="target-paragraph">My name is Sara. I like to play.</div>
+    </div>
+
+    <!-- Typing Input Area -->
+    <div class="typing-area">
+      <label for="typingInput" class="input-label">✍️ Your turn! Type here:</label>
+      <input type="text" id="typingInput" class="typing-input" placeholder="Start typing the above sentence..." autocomplete="off" autofocus>
+      <!-- <div class="hint-message">✨ Green = correct  |  ❌ Red = wrong letter (fix it!)</div> -->
+    </div>
+
+    <!-- Restart Button & New Paragraph -->
+    <div class="action-buttons">
+      <button id="restartBtn" class="btn restart-btn">🔄 New Paragraph</button>
+    </div>
+
+    <footer class="game-footer">
+      <p>🎧 Listen to friendly sounds! Type correctly, get a happy popup! 🌟</p>
+    </footer>
+  </div>
+
+  <!-- Success Popup Modal (hidden by default) -->
+  <div id="successPopup" class="popup-overlay">
+    <div class="popup-card">
+      <div class="popup-emoji">🎉🌟🎈</div>
+      <h2 id="popupMessage" class="popup-message">Great Job! 🎉</h2>
+      <p>You typed perfectly! Keep going!</p>
+      <button id="closePopupBtn" class="popup-btn">Next Paragraph 🚀</button>
+    </div>
+  </div>
+
+  <script src="english.js"></script>
+</body>
+</html>

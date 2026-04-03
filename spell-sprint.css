@@ -27,7 +27,7 @@ body {
   min-height: 100vh;
 }
 
-/* Header - Exactly same as original */
+/* Header - Original color scheme with restart button */
 .app-header {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -65,6 +65,72 @@ body {
   letter-spacing: 0.5px;
 }
 
+.header-controls {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Restart Button - Original color scheme */
+.restart-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+
+.restart-btn:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.restart-btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.restart-icon {
+  font-size: 18px;
+  display: inline-block;
+  transition: transform 0.3s;
+  color: var(--accent-blue);
+}
+
+.restart-btn:hover .restart-icon {
+  transform: rotate(180deg);
+}
+
+.restart-text {
+  display: inline-block;
+}
+
+@media (max-width: 600px) {
+  .restart-text {
+    display: none;
+  }
+  
+  .restart-btn {
+    padding: 8px 12px;
+  }
+  
+  .restart-icon {
+    font-size: 20px;
+    margin: 0;
+  }
+}
+
 .difficulty-selector {
   justify-self: end;
 }
@@ -76,15 +142,21 @@ body {
   font-weight: 500;
   font-size: 14px;
   background: white;
+  color: var(--text-primary);
   cursor: pointer;
   outline: none;
-  color: var(--text-primary);
+  transition: all 0.2s;
 }
 
 .difficulty-dropdown:hover {
   border-color: var(--accent-blue);
+  color: var(--accent-blue);
 }
 
+.difficulty-dropdown option {
+  background: white;
+  color: var(--text-primary);
+}
 /* Game Container */
 .game-container {
   max-width: 700px;

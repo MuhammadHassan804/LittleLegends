@@ -8,10 +8,14 @@
 </head>
 <body>
 
-  <!-- Header - Exactly same as before -->
   <header class="app-header">
-    <a class="home-btn" href="index.html">🏠 HOME</a>
-    <h1 class="app-title">SPELL SPRINT</h1>
+  <a class="home-btn" href="index.html">🏠 HOME</a>
+  <h1 class="app-title">SPELL SPRINT</h1>
+  <div class="header-controls">
+    <button class="restart-btn" id="headerRestartBtn" title="Restart Game">
+      <span class="restart-icon">↻</span>
+      <span class="restart-text">Restart</span>
+    </button>
     <div class="difficulty-selector">
       <select id="difficultySelect" class="difficulty-dropdown">
         <option value="easy">Easy</option>
@@ -19,7 +23,8 @@
         <option value="hard">Hard</option>
       </select>
     </div>
-  </header>
+  </div>
+</header>
 
   <!-- Main Game Container -->
   <main class="game-container">

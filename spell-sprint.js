@@ -1,8 +1,6 @@
 // spell-sprint.js
 // Professional Spell Sprint Game
 // Features: Timer 30-60s, No word repetition, 3 Difficulties, Clean UI
-
-// ---------- Extensive Word Database by Difficulty (50+ words per difficulty) ----------
 const wordDatabase = {
   easy: [
     { pattern: "C _ T", answer: "A", hint: "A furry pet that meows", word: "CAT", options: ["A", "O", "U", "E"] },
@@ -62,7 +60,7 @@ const wordDatabase = {
 };
 
 // ---------- Game State ----------
-let currentDifficulty = "medium";
+let currentDifficulty = "medium"; // Default to medium
 let currentLevel = 1;
 let score = 0;
 let streak = 0;
@@ -72,7 +70,7 @@ let usedIndices = [];
 let currentWords = [];
 let currentQuestion = null;
 let timerInterval = null;
-let timeLeft = 35; // Will be set based on difficulty
+let timeLeft = 45; // Default to 45 seconds for medium
 let gameActive = false;
 let gamePaused = false;
 let nextWordTimeout = null;
@@ -96,7 +94,8 @@ const elements = {
   finalWords: document.getElementById('finalWords'),
   playAgainBtn: document.getElementById('playAgainBtn'),
   continueBtn: document.getElementById('continueBtn'),
-  difficultySelect: document.getElementById('difficultySelect')
+  difficultySelect: document.getElementById('difficultySelect'),
+  headerRestartBtn: document.getElementById('headerRestartBtn')
 };
 
 // ---------- Helper Functions ----------
@@ -108,7 +107,14 @@ function formatTime(seconds) {
 
 function updateTimerDisplay() {
   elements.timer.textContent = formatTime(timeLeft);
-  elements.timer.style.color = timeLeft <= 10 ? '#dc2626' : '#1e293b';
+  // Visual warning when time is low (10 seconds or less)
+  if (timeLeft <= 10) {
+    elements.timer.style.color = '#dc2626';
+    elements.timer.style.fontWeight = '700';
+  } else {
+    elements.timer.style.color = '#1e293b';
+    elements.timer.style.fontWeight = '700';
+  }
 }
 
 function updateScore() {
@@ -182,13 +188,14 @@ function handleGameOver() {
   elements.gameOverModal.classList.add('show');
 }
 
-// Get base time based on difficulty (30-60 seconds range)
+// Get base time based on difficulty
+// Easy: 30 seconds, Medium: 45 seconds, Hard: 60 seconds
 function getBaseTime() {
   switch(currentDifficulty) {
-    case 'easy': return 45;
-    case 'medium': return 35;
-    case 'hard': return 30;
-    default: return 35;
+    case 'easy': return 30;
+    case 'medium': return 45;
+    case 'hard': return 60;
+    default: return 45; // Default to medium
   }
 }
 
@@ -300,8 +307,10 @@ function handleLetterClick(btn, selectedLetter) {
     wordsCompleted++;
     
     // Add time bonus (2-5 seconds based on streak)
+    // But never exceed the maximum time for the difficulty
+    const maxTime = getBaseTime() + 15; // Allow up to 15 seconds bonus
     const timeBonus = Math.min(5, 2 + Math.floor(streak / 2));
-    timeLeft = Math.min(60, timeLeft + timeBonus);
+    timeLeft = Math.min(maxTime, timeLeft + timeBonus);
     
     showMessage(`✓ +${pointsEarned} points!`, true);
     
@@ -332,7 +341,8 @@ function handleLetterClick(btn, selectedLetter) {
     
     // Update game state
     streak = 0;
-    timeLeft = Math.max(getBaseTime() - 10, timeLeft - 5); // Penalty
+    // Penalty: lose 5 seconds, but not below 10 seconds
+    timeLeft = Math.max(10, timeLeft - 5);
     
     showMessage(`✗ Correct letter was ${correct}`, false);
     updateScore();
@@ -361,7 +371,7 @@ function resetGame() {
   streak = 0;
   highestStreak = 0;
   wordsCompleted = 0;
-  timeLeft = getBaseTime();
+  timeLeft = getBaseTime(); // Set time based on selected difficulty
   gameActive = true;
   gamePaused = false;
   
@@ -401,6 +411,7 @@ function nextLevel() {
   } else if (currentDifficulty === 'medium') {
     currentDifficulty = 'hard';
   }
+  // If already hard, stay on hard
   
   elements.difficultySelect.value = currentDifficulty;
   currentLevel++;
@@ -424,13 +435,55 @@ function nextLevel() {
 elements.playAgainBtn.addEventListener('click', resetGame);
 elements.continueBtn.addEventListener('click', nextLevel);
 
+// Header restart button
+if (elements.headerRestartBtn) {
+  elements.headerRestartBtn.addEventListener('click', () => {
+    resetGame();
+    showMessage('🔄 Game restarted!', true);
+  });
+}
+
+// Difficulty change handler
 elements.difficultySelect.addEventListener('change', (e) => {
-  currentDifficulty = e.target.value;
+  const newDifficulty = e.target.value;
+  
+  // Update current difficulty
+  currentDifficulty = newDifficulty;
+  
+  // Update level badge
   currentLevel = 1;
   elements.levelBadge.textContent = `Level ${currentLevel} · ${currentDifficulty.charAt(0).toUpperCase() + currentDifficulty.slice(1)}`;
   
+  // Update timer based on new difficulty
+  timeLeft = getBaseTime();
+  updateTimerDisplay();
+  
+  // Reset the game with new difficulty if game is active
   if (gameActive) {
-    resetGame();
+    // Reset game state but keep new difficulty
+    score = 0;
+    streak = 0;
+    wordsCompleted = 0;
+    updateScore();
+    elements.progressBar.style.width = '0%';
+    
+    // Stop timers
+    stopTimer();
+    if (nextWordTimeout) {
+      clearTimeout(nextWordTimeout);
+      nextWordTimeout = null;
+    }
+    
+    // Initialize new words for new difficulty
+    initWords();
+    
+    // Load first word
+    loadNextWord();
+    
+    // Start timer
+    startTimer();
+    
+    showMessage(`🎮 ${newDifficulty.charAt(0).toUpperCase() + newDifficulty.slice(1)} mode!`, true);
   }
 });
 
@@ -450,5 +503,13 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Initialize game
-resetGame();
+// Initialize game with Medium difficulty (45 seconds)
+// Make sure the dropdown is set to medium
+document.addEventListener('DOMContentLoaded', () => {
+  // Set dropdown to medium
+  if (elements.difficultySelect) {
+    elements.difficultySelect.value = 'medium';
+  }
+  // Start the game
+  resetGame();
+});

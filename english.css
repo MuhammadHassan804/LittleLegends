@@ -1,0 +1,404 @@
+/* english.css - Kid-friendly typing game theme: soft blue sky theme */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(145deg, #94d7f2 0%, #c5eaf7 100%);
+  font-family: 'Comic Neue', 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI Emoji', 'Poppins', cursive, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* animated floating decorations */
+.deco {
+  position: absolute;
+  font-size: 2.8rem;
+  opacity: 0.5;
+  pointer-events: none;
+  animation: float 8s infinite ease-in-out;
+  z-index: 0;
+}
+.deco-1 {
+  top: 12%;
+  left: 5%;
+  animation-duration: 12s;
+}
+.deco-2 {
+  bottom: 10%;
+  right: 6%;
+  font-size: 3.5rem;
+  animation-duration: 14s;
+}
+.deco-3 {
+  top: 20%;
+  right: 8%;
+  font-size: 2.4rem;
+  animation-duration: 10s;
+}
+.deco-4 {
+  bottom: 18%;
+  left: 7%;
+  font-size: 3rem;
+  animation-duration: 11s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg);}
+  50% { transform: translateY(-20px) rotate(5deg);}
+  100% { transform: translateY(0px) rotate(0deg);}
+}
+
+/* main game container */
+.game-container {
+  max-width: 1100px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(3px);
+  border-radius: 80px 80px 70px 70px;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15), 0 0 0 12px #94d7f2, 0 0 0 18px #5ba3c9;
+  padding: 25px 35px 40px;
+  transition: all 0.2s ease;
+  z-index: 2;
+  border: 3px solid #e8f4fa;
+}
+
+/* Header styling */
+.game-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+.game-header h1 {
+  font-size: 2.3rem;
+  background: linear-gradient(135deg, #4a9fd8, #2c6e9e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+/* stats bar (WPM, Accuracy, Progress) */
+.stats-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  background: #dceef7;
+  padding: 12px 20px;
+  border-radius: 60px;
+  margin-top: 5px;
+  box-shadow: inset 0 1px 4px rgba(0,0,0,0.05), 0 6px 12px rgba(0,0,0,0.08);
+}
+.stat-card {
+  background: white;
+  border-radius: 50px;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+.stat-icon {
+  font-size: 1.5rem;
+}
+.stat-label {
+  color: #2c7ab3;
+}
+.stat-value {
+  background: #d4eaf5;
+  padding: 2px 12px;
+  border-radius: 40px;
+  font-family: monospace;
+  font-size: 1.3rem;
+  min-width: 55px;
+  text-align: center;
+  color: #1a5d8a;
+}
+
+/* progress bar */
+.progress-card {
+  min-width: 180px;
+}
+.progress-bar-bg {
+  width: 110px;
+  background: #c5e0f0;
+  border-radius: 30px;
+  height: 14px;
+  overflow: hidden;
+  margin-left: 5px;
+}
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #5cb85c, #8bc34a);
+  border-radius: 30px;
+  transition: width 0.1s ease;
+}
+
+/* paragraph display card */
+.paragraph-card {
+  background: #f0f8fe;
+  border-radius: 60px;
+  padding: 28px 25px;
+  margin: 20px 0 20px;
+  box-shadow: 0 12px 18px rgba(0,0,0,0.08), inset 0 1px 3px rgba(255,255,255,0.8);
+  border: 2px solid #cde5f2;
+}
+.paragraph-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: #7bc2e8;
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 40px;
+  margin-bottom: 20px;
+  color: #1a4a6e;
+}
+.target-paragraph {
+  font-size: 2rem;
+  line-height: 1.4;
+  font-weight: 600;
+  word-break: break-word;
+  letter-spacing: 0.5px;
+  color: #2c5a7a;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 50px;
+  font-family: 'Courier New', 'Fira Code', 'Comic Neue', monospace;
+  text-shadow: 0 1px 0 white;
+  box-shadow: inset 0 1px 8px rgba(0,0,0,0.02), 0 4px 8px rgba(0,0,0,0.05);
+}
+
+/* Typing area */
+.typing-area {
+  margin: 20px 0 25px;
+}
+.input-label {
+  font-size: 1.3rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 12px;
+  color: #2c7ab3;
+  background: #e2f0f8;
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 50px;
+}
+.typing-input {
+  width: 100%;
+  padding: 18px 25px;
+  font-size: 1.7rem;
+  font-family: 'Courier New', 'Fira Code', monospace;
+  border: 4px solid #7bc2e8;
+  border-radius: 70px;
+  background: white;
+  outline: none;
+  transition: all 0.2s;
+  color: #2c5a7a;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.typing-input:focus {
+  border-color: #4a9fd8;
+  box-shadow: 0 0 0 5px rgba(74, 159, 216, 0.3);
+  transform: scale(1.01);
+}
+.hint-message {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: #2c7ab3;
+  text-align: center;
+  background: #dceef7;
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+/* Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 15px;
+}
+.btn {
+  background: #5ba3c9;
+  border: none;
+  padding: 14px 32px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border-radius: 60px;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 8px 0 #357a9e;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 3px 0 #357a9e;
+}
+.restart-btn {
+  background: #7bc2e8;
+  box-shadow: 0 8px 0 #4a8db5;
+}
+.restart-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 3px 0 #4a8db5;
+}
+
+/* footer */
+.game-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #2c7ab3;
+  background: #dceef7;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 6px 20px;
+  border-radius: 50px;
+}
+
+/* Popup modal - success */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s, opacity 0.2s;
+  z-index: 1000;
+}
+.popup-overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+.popup-card {
+  background: #fffef7;
+  max-width: 400px;
+  width: 85%;
+  padding: 30px 20px;
+  border-radius: 70px;
+  text-align: center;
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3);
+  border: 6px solid #7bc2e8;
+  animation: bounceIn 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+.popup-emoji {
+  font-size: 3.5rem;
+  margin-bottom: 12px;
+}
+.popup-message {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4a9fd8;
+  margin-bottom: 12px;
+}
+.popup-card p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  color: #2c7ab3;
+}
+.popup-btn {
+  background: #5ba3c9;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 40px;
+  color: white;
+  cursor: pointer;
+  transition: 0.1s linear;
+  box-shadow: 0 4px 0 #357a9e;
+}
+.popup-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #357a9e;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  80% { transform: scale(1.05);}
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* character-by-character highlighting inside target paragraph */
+.highlight-letter {
+  display: inline-block;
+  transition: all 0.05s linear;
+  border-radius: 8px;
+  padding: 0 1px;
+}
+.highlight-correct {
+  background-color: #b9f6ca;
+  color: #1f5a1a;
+  box-shadow: 0 0 0 1px #5cb85c;
+}
+.highlight-wrong {
+  background-color: #ffb3ba;
+  color: #a1220a;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: red;
+}
+.highlight-current {
+  background-color: #fff0b5;
+  border-bottom: 3px solid #ff9900;
+}
+
+/* responsive */
+@media (max-width: 680px) {
+  .game-container {
+    padding: 18px 20px;
+  }
+  .target-paragraph {
+    font-size: 1.4rem;
+    padding: 12px;
+  }
+  .typing-input {
+    font-size: 1.2rem;
+    padding: 12px 18px;
+  }
+  .stats-bar {
+    gap: 10px;
+  }
+  .stat-card {
+    padding: 4px 12px;
+    font-size: 0.9rem;
+  }
+  .game-header h1 {
+    font-size: 1.7rem;
+  }
+  .btn {
+    padding: 10px 22px;
+    font-size: 1.2rem;
+  }
+}

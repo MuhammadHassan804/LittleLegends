@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Shadow Match Safari | Kids Drag & Drop Game</title>
+  <link rel="stylesheet" href="shadow-match.css">
+</head>
+<body>
+  <div class="game-container" id="gameContainer">
+    <!-- START SCREEN -->
+    <div class="screen start-screen" id="startScreen">
+      <div class="start-card">
+        <h1>🦁 Shadow Match Safari 🐘</h1>
+        <p>Match each animal to its shadow!</p>
+        <div class="animal-showcase">
+          <span>🐱</span><span>🐶</span><span>🐼</span><span>🦁</span><span>🐘</span>
+        </div>
+        <button class="play-btn" id="playBtn">🌟 Play Game 🌟</button>
+      </div>
+    </div>
+
+    <!-- GAME SCREEN -->
+    <div class="screen game-screen hidden" id="gameScreen">
+      <div class="game-header">
+        <h2>🌿 Drag & Match the Shadows 🌿</h2>
+        <div class="score-box">
+          <span id="matchCounter">0</span> / <span id="totalCounter">10</span> Matched
+        </div>
+        <button class="restart-btn" id="restartBtn">🔄 New Game</button>
+      </div>
+
+      <!-- ANIMALS AREA (Draggable) -->
+      <div class="animals-area" id="animalsArea"></div>
+
+      <!-- SHADOWS AREA (Drop Zones) -->
+      <div class="shadows-area" id="shadowsArea"></div>
+
+      <!-- WIN OVERLAY -->
+      <div class="win-overlay hidden" id="winOverlay">
+        <div class="win-card">
+          <h2>🎉 You Win! 🎉</h2>
+          <div class="confetti-animation">✨🎈✨🎊✨</div>
+          <button class="play-again-btn" id="winPlayAgainBtn">Play Again 🌈</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="Shadow-match.js"></script>
+</body>
+</html>

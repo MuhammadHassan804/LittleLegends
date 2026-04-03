@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Math Runner | Endless Educational Game</title>
+    <link rel="stylesheet" href="runner.css">
+</head>
+<body>
+    <!-- Game Container -->
+    <div class="game-container">
+        <!-- Top Bar: Score, Lives, Coins -->
+        <div class="top-bar">
+            <div class="stat">
+                <span class="stat-icon">🏆</span>
+                <span id="scoreValue">0</span>
+            </div>
+            <div class="stat lives">
+                <span class="stat-icon">❤️</span>
+                <span id="livesValue">3</span>
+            </div>
+            <div class="stat">
+                <span class="stat-icon">🪙</span>
+                <span id="coinsValue">0</span>
+            </div>
+        </div>
+
+        <!-- Canvas Runner Area -->
+        <canvas id="gameCanvas" width="800" height="400"></canvas>
+
+        <!-- Bottom Panel: Question & MCQ -->
+        <div class="quiz-panel">
+            <div class="question-box" id="questionText">Click START to begin!</div>
+            <div class="options-grid" id="optionsContainer">
+                <button class="opt-btn" disabled>?</button>
+                <button class="opt-btn" disabled>?</button>
+                <button class="opt-btn" disabled>?</button>
+                <button class="opt-btn" disabled>?</button>
+            </div>
+            <div class="game-controls">
+                <button id="startBtn" class="action-btn start-btn">🏃‍♂️ START RUNNING</button>
+                <button id="restartBtn" class="action-btn restart-btn">🔄 RESTART</button>
+            </div>
+        </div>
+
+        <!-- Feedback overlay (animations) -->
+        <div id="feedbackToast" class="feedback-toast">+10</div>
+        <div id="speedEffect" class="speed-effect"></div>
+    </div>
+
+    <script src="runner.js"></script>
+</body>
+</html>
